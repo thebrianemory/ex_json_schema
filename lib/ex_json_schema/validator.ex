@@ -96,16 +96,16 @@ defmodule ExJsonSchema.Validator do
   end
 
   defp validate_aspect(_, _, {"minProperties", min_properties}, data) when is_map(data) do
-    case Map.size(data) >= min_properties do
+    case map_size(data) >= min_properties do
       true -> []
-      false -> [{"Expected a minimum of #{min_properties} properties but got #{Map.size(data)}", []}]
+      false -> [{"Expected a minimum of #{min_properties} properties but got #{map_size(data)}", []}]
     end
   end
 
   defp validate_aspect(_, _, {"maxProperties", max_properties}, data) when is_map(data) do
-    case Map.size(data) <= max_properties do
+    case map_size(data) <= max_properties do
       true -> []
-      false -> [{"Expected a maximum of #{max_properties} properties but got #{Map.size(data)}", []}]
+      false -> [{"Expected a maximum of #{max_properties} properties but got #{map_size(data)}", []}]
     end
   end
 
